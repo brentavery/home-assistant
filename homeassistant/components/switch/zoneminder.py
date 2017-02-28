@@ -20,6 +20,7 @@ DEPENDENCIES = ['zoneminder']
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_COMMAND_ON): cv.string,
     vol.Required(CONF_COMMAND_OFF): cv.string,
+    vol.Required('zone'): cv.string
 })
 
 
@@ -27,6 +28,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     """Set up the ZoneMinder switch platform."""
     on_state = config.get(CONF_COMMAND_ON)
     off_state = config.get(CONF_COMMAND_OFF)
+    zone = config.get('zone')
 
     switches = []
 
